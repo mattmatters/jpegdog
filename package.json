@@ -4,6 +4,6 @@
   "author": "Matt Lewis",
   "license": "MIT",
   "scripts": {
-    "postinstall": "yarn install --prefix server"
+    "postinstall": "npm install --prefix server"
   }
 }

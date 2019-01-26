@@ -6,6 +6,6 @@ RUN apk add yarn && \
         yarn install && \
         apk del yarn
 
-COPY ./ ./
+COPY ./src ./src
 
-CMD node ./index.js
+CMD node ./src/index.js

@@ -4,7 +4,7 @@ networks:
 services:
   server:
     build:
-      context: ./server
+      context: ./
     environment:
       - PEXELS_API_TOKEN=$PEXELS_API_TOKEN
       - NODE_ENV=dev

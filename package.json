@@ -1,0 +1,9 @@
+{
+  "name": "jpeg-dog",
+  "version": "1.0.0",
+  "author": "Matt Lewis",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "yarn install --prefix server"
+  }
+}

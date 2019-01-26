@@ -1,0 +1,22 @@
+version: "3.5"
+networks:
+  net:
+services:
+  server:
+    build:
+      context: ./server
+    environment:
+      - PEXELS_API_TOKEN=$PEXELS_API_TOKEN
+      - NODE_ENV=dev
+      - PORT=3000
+    networks:
+      net:
+    depends_on:
+      - redis-service
+    ports:
+      - "3000:3000"
+  redis-service:
+    image: redis
+    command: redis-server
+    networks:
+      net:

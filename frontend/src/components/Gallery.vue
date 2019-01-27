@@ -34,7 +34,7 @@
      src: PhotoSrc;
  }
 
- const API_URL: string = 'http://localhost:3000/images';
+ const API_URL: string = 'https://api.jpeg.dog/images';
 
  @Component
  export default class Gallery extends Vue {

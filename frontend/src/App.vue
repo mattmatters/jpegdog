@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Not a jpeg" src="./assets/notjpegdog.png">
     <h1>JPEG Dog</h1>
+    <img alt="Not a jpeg" src="./assets/notjpegdog.png">
+    <p>A celebration of all jpeg dogs.</p>
     <Gallery />
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
  import { Component, Vue } from 'vue-property-decorator';
  import Gallery from './components/Gallery.vue';
+ import Footer from './components/Footer.vue';
 
  @Component({
      components: {
          Gallery,
+         Footer,
      },
  })
  export default class App extends Vue {}

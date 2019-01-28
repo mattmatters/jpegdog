@@ -1,12 +1,14 @@
 <template>
-    <ul>
-        <li v-for="image in images">
-            <div>
-                <img :src=image.src.small />
-                <p>{{image.photographer}}</p>
-            </div>
-        </li>
-    </ul>
+  <ul>
+    <transition name="fade">
+      <li v-for="image in images">
+        <div v>
+          <img :src=image.src.small />
+          <p>{{image.photographer}}</p>
+        </div>
+      </li>
+    </transition>
+  </ul>
 </template>
 
 <script lang="ts">
@@ -54,4 +56,10 @@
    display flex;
    flex-wrap wrap;
    justify-content space-around;
+
+ .fade-enter-active, .fade-leave-active
+   transition opacity .5s;
+
+ .fade-enter, .fade-leave-to
+  opacity 0;
 </style>

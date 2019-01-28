@@ -13,7 +13,8 @@ const getImages = async () => {
   const opts = {
     uri: "https://api.pexels.com/v1/search",
     qs: {
-      query: "dog"
+      query: "dog",
+      per_page: 80
     },
     headers: {
       Authorization: PEXELS_API_TOKEN
@@ -22,6 +23,14 @@ const getImages = async () => {
   };
 
   return await request(opts);
+};
+
+const shuffle = a => {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 };
 
 // Server
@@ -46,7 +55,7 @@ app.use(function(req, res, next) {
 app.get("/images", async (req, res, next) => {
   try {
     const { photos } = await getImages();
-    return res.json(photos);
+    return res.json(shuffle(photos));
   } catch (e) {
     return next(e);
   }

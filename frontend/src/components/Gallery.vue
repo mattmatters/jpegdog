@@ -51,7 +51,7 @@
  @Component({
      components: {
          LoopingRhombusesSpinner,
-     }
+     },
  })
  export default class Gallery extends Vue {
      private images: Photo[] = [];

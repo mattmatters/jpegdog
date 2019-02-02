@@ -1,18 +1,28 @@
 <template>
-  <ul>
+  <div>
     <transition name="fade">
-      <li v-for="image in images">
-        <div v>
-          <img :src=image.src.small />
-          <p>{{image.photographer}}</p>
-        </div>
-      </li>
+      <div v-if="!images || !images.length" class="spinner">
+        <looping-rhombuses-spinner
+            :animation-duration="2500"
+            :rhombus-size="15"
+            color="#2c3e50"
+        />
+      </div>
+      <ul v-else>
+        <li v-for="(image, idx) in images" :key="image.src.small">
+          <div>
+            <img :src=image.src.small />
+            <p>{{image.photographer}}</p>
+          </div>
+        </li>
+      </ul>
     </transition>
-  </ul>
+  </div>
 </template>
 
 <script lang="ts">
  import { Component, Prop, Vue } from 'vue-property-decorator';
+ import { LoopingRhombusesSpinner } from 'epic-spinners';
  import axios from 'axios';
 
  interface PhotoSrc {
@@ -38,7 +48,11 @@
 
  const API_URL: string = 'https://api.jpeg.dog/images';
 
- @Component
+ @Component({
+     components: {
+         LoopingRhombusesSpinner,
+     }
+ })
  export default class Gallery extends Vue {
      private images: Photo[] = [];
 
@@ -50,6 +64,11 @@
 </script>
 
 <style scoped lang="stylus">
+ .spinner
+   display flex
+   justify-content center
+   text-align center
+
  ul
    list-style-type none
    padding 0

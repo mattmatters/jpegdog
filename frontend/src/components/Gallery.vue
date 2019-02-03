@@ -23,28 +23,8 @@
 <script lang="ts">
  import { Component, Prop, Vue } from 'vue-property-decorator';
  import { LoopingRhombusesSpinner } from 'epic-spinners';
- import axios from 'axios';
+ import { getPhotos, Photo} from '../photos';
 
- interface PhotoSrc {
-     original: string;
-     large2x: string;
-     large: string;
-     medium: string;
-     small: string;
-     portrait: string;
-     square: string;
-     landscape: string;
-     tiny: string;
- }
-
- interface Photo {
-     id: number;
-     width: number;
-     height: number;
-     photographer: string;
-     photographer_url: string;
-     src: PhotoSrc;
- }
 
  const API_URL: string = 'https://api.jpeg.dog/images';
 
@@ -57,7 +37,7 @@
      private images: Photo[] = [];
 
      private async mounted() {
-         const { data } = await axios.get<Photo[]>(API_URL);
+         const { data } = await getPhotos();
          this.images = data;
      }
  }
